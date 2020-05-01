@@ -7,17 +7,17 @@ def decrypt(block):
     a, b, c, d = unpack("<4I", block)
     for i in xrange(32):
         # decrypting the second step in encrypt
-        tempa = a
+        old_a = a
         d = d ^ 1337
         a = c ^ (F(d | F(d) ^ d))
         b = b ^ (F(d ^ F(a) ^ (d | a)))
-        c = tempa ^ (F(d | F(b ^ F(a)) ^ F(d | b) ^ a))
+        c = old_a ^ (F(d | F(b ^ F(a)) ^ F(d | b) ^ a))
         # decrypting the frist step in encrypt
-        tempa = a
+        old_a = a
         a = d ^ 31337
         d = c ^ (F(a | F(a) ^ a))
         c = b ^ (F(a ^ F(d) ^ (a | d)))
-        b = tempa ^ (F(a | F(c ^ F(d)) ^ F(a | c) ^ d))
+        b = old_a ^ (F(a | F(c ^ F(d)) ^ F(a | c) ^ d))
     return pack("<4I", a, b, c, d)
 
 ct = open("flag.enc").read()
