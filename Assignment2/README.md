@@ -1,4 +1,3 @@
-
 # Genfie CTF Challenge
 
 #### Challenge Link:
@@ -48,3 +47,10 @@ and also repeat these steps 32 to decrypt flag
 
 #### Submission ScreenShot:- 
 ![ٍSubmission Photo](ctf_challenge_submitions.PNG) 
+
+#### How to Run:-
+change your directory in cmd to project directory then run this command in cmd.
+
+```
+python decrypt.py
+```
